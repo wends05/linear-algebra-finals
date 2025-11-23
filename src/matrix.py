@@ -26,9 +26,31 @@ class Matrix:
         return np.sum(res)
     
     @staticmethod
+    def calculate_production(matrixA, hours):
+        return np.dot(matrixA, hours)
+    
+    @staticmethod
     def print_matrix(matrix):
         rows, cols = matrix.shape
         for i in range(rows):
             for j in range(cols):
                 print(f"{matrix[i, j]:8.2f}", end=" ")
             print()
+
+    @staticmethod
+    def get_detailed_breakdown(matrix, hours):
+        """
+        Calculates the detailed breakdown of Story Points.
+        
+        Returns:
+            breakdown_matrix (np.array): (categories x roles) matrix of SP contributions.
+            total_sp_per_person (np.array): Total SP contributed by each person.
+            total_sp_per_category (np.array): Total SP produced in each category.
+        """
+        # Broadcasting hours across the rows of the matrix
+        breakdown_matrix = matrix * hours
+        
+        total_sp_per_person = np.sum(breakdown_matrix, axis=0)
+        total_sp_per_category = np.sum(breakdown_matrix, axis=1)
+        
+        return breakdown_matrix, total_sp_per_person, total_sp_per_category
