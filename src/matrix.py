@@ -15,11 +15,16 @@ class Matrix:
             print(f"Mid-Level Dev (y):    {mid_hours:.2f} hours")
             print(f"Junior Developer (z): {junior_hours:.2f} hours")
             print(f"QA Engineer (v):      {qa_hours:.2f} hours")
-        
+
+            return X
         except np.linalg.LinAlgError as e:
             print("Error: The system of equations has no unique solution.")
             return []
 
+    @staticmethod
+    def total_hours(res):
+        return np.sum(res)
+    
     @staticmethod
     def print_matrix(matrix):
         rows, cols = matrix.shape
