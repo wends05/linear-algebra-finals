@@ -1,8 +1,7 @@
 import sys
 import os
 
-from constants import sp_total
-from constants import five_by_five_matrix
+from constants import sp_total, five_by_five_matrix, categories
 from matrix import Matrix
 
 if __name__ == "__main__":
@@ -13,4 +12,6 @@ if __name__ == "__main__":
     production = Matrix.calculate_production(five_by_five_matrix, res)
     print("\nStory Points (B):")
     for i, p in enumerate(production):
-        print(f"Category {i + 1}: {p:} story points")
+        print(f"Category {categories[i]}: {p:} story points")
+    breakdown = Matrix.get_detailed_breakdown(five_by_five_matrix, res)
+    print(breakdown[0])

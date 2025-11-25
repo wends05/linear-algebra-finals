@@ -14,3 +14,5 @@ sp_total = np.array([
     70,
     40,
 ])
+
+categories = ["Complex Story Points", "Infra Story Points", "Maintenance Story Points", "Testing Story Points"]
